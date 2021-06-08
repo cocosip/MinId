@@ -14,10 +14,13 @@
     <Description>SharpAbp MinId Module</Description>
     <RootNamespace />
   </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="Volo.Abp.AutoMapper" Version="$(VoloAbpPackageVersion)" />
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="$(VoloAbpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SharpAbp.MinId.Application.Contracts\SharpAbp.MinId.Application.Contracts.csproj" />
     <ProjectReference Include="..\SharpAbp.MinId.Domain\SharpAbp.MinId.Domain.csproj" />
   </ItemGroup>

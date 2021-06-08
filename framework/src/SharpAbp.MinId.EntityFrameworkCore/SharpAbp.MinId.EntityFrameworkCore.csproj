@@ -14,9 +14,12 @@
     <Description>SharpAbp MinId Module</Description>
     <RootNamespace />
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="$(VoloAbpPackageVersion)" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <ProjectReference Include="..\SharpAbp.MinId.Domain\SharpAbp.MinId.Domain.csproj" />
   </ItemGroup>
 

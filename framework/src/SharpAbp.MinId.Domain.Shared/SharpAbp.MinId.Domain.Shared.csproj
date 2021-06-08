@@ -25,4 +25,5 @@
     <Content Remove="SharpAbp\MinId\Localization\Resources\*.json" />
   </ItemGroup>
 
+
 </Project>

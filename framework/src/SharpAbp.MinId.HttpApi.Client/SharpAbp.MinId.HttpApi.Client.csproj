@@ -17,6 +17,9 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Http.Client" Version="$(VoloAbpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SharpAbp.MinId.Application.Contracts\SharpAbp.MinId.Application.Contracts.csproj" />
   </ItemGroup>
 

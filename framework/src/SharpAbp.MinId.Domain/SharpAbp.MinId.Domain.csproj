@@ -17,6 +17,9 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Ddd.Domain" Version="$(VoloAbpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SharpAbp.MinId.Domain.Shared\SharpAbp.MinId.Domain.Shared.csproj" />
   </ItemGroup>
 
