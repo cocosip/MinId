@@ -11,7 +11,9 @@ namespace SharpAbp.MinId
              * into multiple profile classes for a better organization. */
 
             CreateMap<MinIdInfo, MinIdInfoDto>();
-
+            CreateMap<MinIdInfo, MinIdInfoCacheItem>();
+            CreateMap<MinIdToken, MinIdTokenDto>();
+            CreateMap<MinIdToken, MinIdTokenCacheItem>();
         }
     }
 }

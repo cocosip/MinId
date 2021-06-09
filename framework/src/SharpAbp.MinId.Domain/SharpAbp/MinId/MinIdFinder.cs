@@ -1,15 +1,23 @@
 ﻿using JetBrains.Annotations;
 using System.Threading.Tasks;
 using Volo.Abp;
+using Volo.Abp.Caching;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.ObjectMapping;
 
 namespace SharpAbp.MinId
 {
     public class MinIdFinder : IMinIdFinder, ITransientDependency
     {
+        protected IDistributedCache<MinIdInfoCacheItem> MinIdInfoCache { get; }
         protected IMinIdInfoRepository MinIdInfoRepository { get; }
-        public MinIdFinder(IMinIdInfoRepository minIdInfoRepository)
+
+        public MinIdFinder(
+            IObjectMapper objectMapper,
+            IDistributedCache<MinIdInfoCacheItem> minIdInfoCache,
+            IMinIdInfoRepository minIdInfoRepository)
         {
+            MinIdInfoCache = minIdInfoCache;
             MinIdInfoRepository = minIdInfoRepository;
         }
 
@@ -21,8 +29,14 @@ namespace SharpAbp.MinId
         public virtual async Task<bool> ExistAsync([NotNull] string bizType)
         {
             Check.NotNullOrWhiteSpace(bizType, nameof(bizType));
-            var minIdInfo = await MinIdInfoRepository.FindByBizTypeAsync(bizType);
-            return minIdInfo != null;
+
+            var minIdInfoCacheItem = await MinIdInfoCache.GetOrAddAsync(bizType, async () =>
+            {
+                var minIdInfo = await MinIdInfoRepository.FindByBizTypeAsync(bizType);
+                return minIdInfo?.ToCacheItem();
+            });
+
+            return minIdInfoCacheItem != null;
         }
 
     }

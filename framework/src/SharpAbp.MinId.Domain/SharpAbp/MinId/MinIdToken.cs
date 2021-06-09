@@ -19,5 +19,26 @@ namespace SharpAbp.MinId
         /// Remark
         /// </summary>
         public virtual string Remark { get; set; }
+
+        public MinIdToken()
+        {
+
+        }
+
+
+        public MinIdToken(Guid id, string bizType, string token, string remark)
+        {
+            Id = id;
+            BizType = bizType;
+            Token = token;
+            Remark = remark;
+        }
+
+        public void Update(string bizType, string token, string remark)
+        {
+            BizType = bizType;
+            Token = token;
+            Remark = remark;
+        }
     }
 }
