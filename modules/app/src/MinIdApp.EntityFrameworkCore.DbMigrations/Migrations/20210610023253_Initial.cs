@@ -1129,14 +1129,9 @@ namespace MinIdApp.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_AbpMinIdTokens_BizType",
+                name: "IX_AbpMinIdTokens_BizType_Token",
                 table: "AbpMinIdTokens",
-                column: "BizType");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AbpMinIdTokens_Token",
-                table: "AbpMinIdTokens",
-                column: "Token",
+                columns: new[] { "BizType", "Token" },
                 unique: true);
 
             migrationBuilder.CreateIndex(

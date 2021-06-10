@@ -7,12 +7,12 @@ using Volo.Abp.ObjectMapping;
 
 namespace SharpAbp.MinId
 {
-    public class MinIdFinder : IMinIdFinder, ITransientDependency
+    public class MinIdInfoQuerier : IMinIdInfoQuerier, ITransientDependency
     {
         protected IDistributedCache<MinIdInfoCacheItem> MinIdInfoCache { get; }
         protected IMinIdInfoRepository MinIdInfoRepository { get; }
 
-        public MinIdFinder(
+        public MinIdInfoQuerier(
             IObjectMapper objectMapper,
             IDistributedCache<MinIdInfoCacheItem> minIdInfoCache,
             IMinIdInfoRepository minIdInfoRepository)

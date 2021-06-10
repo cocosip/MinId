@@ -8,10 +8,10 @@ using Volo.Abp.Uow;
 
 namespace SharpAbp.MinId
 {
-    public class TestSegmentIdService : SegmentIdService
+    public class TestSegmentIdService : DefaultSegmentIdService
     {
         public TestSegmentIdService(
-            ILogger<SegmentIdService> logger,
+            ILogger<DefaultSegmentIdService> logger,
             IOptions<MinIdOptions> options,
             IUnitOfWorkManager unitOfWorkManager,
             IMinIdInfoRepository minIdInfoRepository)

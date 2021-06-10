@@ -8,7 +8,7 @@ using Volo.Abp.DependencyInjection;
 
 namespace SharpAbp.MinId
 {
-    public class MinIdGenerator : IMinIdGenerator, ITransientDependency
+    public class DefaultMinIdGenerator : IMinIdGenerator, ITransientDependency
     {
 
         private volatile SegmentId _current = null;
@@ -20,7 +20,7 @@ namespace SharpAbp.MinId
 
         public string BizType { get; protected set; }
 
-        public MinIdGenerator(string bizType, IOptions<MinIdOptions> options, ISegmentIdService segmentIdService)
+        public DefaultMinIdGenerator(string bizType, IOptions<MinIdOptions> options, ISegmentIdService segmentIdService)
         {
             BizType = bizType;
             _loadSegmentIdTimeoutMillis = options.Value.LoadSegmentIdTimeoutMillis;

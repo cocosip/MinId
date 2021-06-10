@@ -11,7 +11,7 @@ using Volo.Abp.EntityFrameworkCore;
 namespace MinIdApp.Migrations
 {
     [DbContext(typeof(MinIdAppMigrationsDbContext))]
-    [Migration("20210609065612_Initial")]
+    [Migration("20210610023253_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -128,9 +128,7 @@ namespace MinIdApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BizType");
-
-                    b.HasIndex("Token")
+                    b.HasIndex("BizType", "Token")
                         .IsUnique();
 
                     b.ToTable("AbpMinIdTokens");

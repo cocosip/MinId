@@ -11,7 +11,7 @@ using Volo.Abp.DependencyInjection;
 
 namespace SharpAbp.MinId
 {
-    public class MinIdGeneratorFactory : IMinIdGeneratorFactory, ISingletonDependency
+    public class DefaultMinIdGeneratorFactory : IMinIdGeneratorFactory, ISingletonDependency
     {
         private readonly int _getMinIdGeneratorTimeoutMillis;
         private readonly SemaphoreSlim _semaphoreSlim;
@@ -19,17 +19,17 @@ namespace SharpAbp.MinId
 
         protected ILogger Logger { get; }
         protected IServiceProvider ServiceProvider { get; }
-        protected IMinIdFinder MinIdFinder { get; }
-        public MinIdGeneratorFactory(
-            ILogger<MinIdGeneratorFactory> logger,
+        protected IMinIdInfoQuerier Querier { get; }
+        public DefaultMinIdGeneratorFactory(
+            ILogger<DefaultMinIdGeneratorFactory> logger,
             IServiceProvider serviceProvider,
             IOptions<MinIdOptions> options,
-            IMinIdFinder minIdFinder)
+            IMinIdInfoQuerier querier)
         {
             Logger = logger;
             ServiceProvider = serviceProvider;
             _getMinIdGeneratorTimeoutMillis = options.Value.GetMinIdGeneratorTimeoutMillis;
-            MinIdFinder = minIdFinder;
+            Querier = querier;
             _semaphoreSlim = new SemaphoreSlim(1);
             _minIdGenerators = new ConcurrentDictionary<string, IMinIdGenerator>();
         }
@@ -77,12 +77,12 @@ namespace SharpAbp.MinId
         protected virtual async Task<IMinIdGenerator> CreateAsync([NotNull] string bizType)
         {
             Check.NotNullOrWhiteSpace(bizType, nameof(bizType));
-            if (!await MinIdFinder.ExistAsync(bizType))
+            if (!await Querier.ExistAsync(bizType))
             {
                 throw new AbpException($"Could not find bizType '{bizType}'.");
             }
 
-            var minIdGenerator = ActivatorUtilities.CreateInstance<MinIdGenerator>(ServiceProvider, bizType);
+            var minIdGenerator = ActivatorUtilities.CreateInstance<DefaultMinIdGenerator>(ServiceProvider, bizType);
             return minIdGenerator;
         }
 

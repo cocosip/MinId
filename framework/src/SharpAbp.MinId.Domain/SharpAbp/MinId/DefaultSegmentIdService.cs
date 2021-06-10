@@ -9,14 +9,14 @@ using Volo.Abp.Uow;
 
 namespace SharpAbp.MinId
 {
-    public class SegmentIdService : ISegmentIdService, ITransientDependency
+    public class DefaultSegmentIdService : ISegmentIdService, ITransientDependency
     {
         protected ILogger Logger { get; }
         protected MinIdOptions Options { get; }
         protected IUnitOfWorkManager UnitOfWorkManager { get; }
         protected IMinIdInfoRepository MinIdInfoRepository { get; }
-        public SegmentIdService(
-            ILogger<SegmentIdService> logger,
+        public DefaultSegmentIdService(
+            ILogger<DefaultSegmentIdService> logger,
             IOptions<MinIdOptions> options,
             IUnitOfWorkManager unitOfWorkManager,
             IMinIdInfoRepository minIdInfoRepository)

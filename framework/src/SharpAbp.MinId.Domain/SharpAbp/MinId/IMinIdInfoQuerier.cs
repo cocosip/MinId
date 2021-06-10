@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace SharpAbp.MinId
 {
-    public interface IMinIdFinder
+    public interface IMinIdInfoQuerier
     {
         /// <summary>
         /// Check bizType minIdInfo exist

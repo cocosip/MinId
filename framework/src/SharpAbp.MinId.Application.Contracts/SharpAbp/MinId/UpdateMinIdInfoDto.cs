@@ -37,11 +37,13 @@ namespace SharpAbp.MinId
         [Required]
         public int Remainder { get; set; }
 
-        [Required]
-        public long Version { get; set; }
-
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            if (!MinIdUtil.IsBizType(BizType))
+            {
+                yield return new ValidationResult($"Invalid BizType '{BizType}'.");
+            }
+
             if (Step <= 0)
             {
                 yield return new ValidationResult($"Step should greater than 0.");
@@ -50,11 +52,6 @@ namespace SharpAbp.MinId
             if (Delta < 0)
             {
                 yield return new ValidationResult($"Delta should greater than 0.");
-            }
-
-            if (Version < 0)
-            {
-                yield return new ValidationResult($"Version should greater than 0.");
             }
 
             yield break;

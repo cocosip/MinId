@@ -18,7 +18,7 @@
         public int LoadSegmentIdTimeoutMillis { get; set; } = 10000;
 
         /// <summary>
-        /// <see cref="MinIdGeneratorFactory.CreateAsync(string)"/>
+        /// <see cref="DefaultMinIdGeneratorFactory.CreateAsync(string)"/>
         /// GetAsync timeout millis
         /// </summary>
         public int GetMinIdGeneratorTimeoutMillis { get; set; } = 10000;

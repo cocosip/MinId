@@ -1,6 +1,9 @@
-﻿namespace SharpAbp.MinId
+﻿using System;
+using Volo.Abp.Application.Dtos;
+
+namespace SharpAbp.MinId
 {
-    public class MinIdTokenDto
+    public class MinIdTokenDto : AuditedEntityDto<Guid>
     {
         /// <summary>
         /// Token

@@ -39,6 +39,11 @@ namespace SharpAbp.MinId
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            if (!MinIdUtil.IsBizType(BizType))
+            {
+                yield return new ValidationResult($"Invalid BizType '{BizType}'.");
+            }
+
             if (Step <= 0)
             {
                 yield return new ValidationResult($"Step should greater than 0.");

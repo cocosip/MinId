@@ -56,10 +56,9 @@ namespace SharpAbp.MinId.EntityFrameworkCore
 
                 b.Property(p => p.Remark).HasMaxLength(MinIdTokenConsts.MaxRemarkLength);
 
-                b.HasIndex(x => x.Token).IsUnique();
+                b.HasIndex(x => new { x.BizType, x.Token }).IsUnique();
 
-                b.HasIndex(x => x.BizType);
-            }); 
+            });
             #endregion
 
         }

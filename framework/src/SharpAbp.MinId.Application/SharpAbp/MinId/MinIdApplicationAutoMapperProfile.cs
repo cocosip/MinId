@@ -14,6 +14,7 @@ namespace SharpAbp.MinId
             CreateMap<MinIdInfo, MinIdInfoCacheItem>();
             CreateMap<MinIdToken, MinIdTokenDto>();
             CreateMap<MinIdToken, MinIdTokenCacheItem>();
+            CreateMap<SegmentId, SegmentIdDto>();
         }
     }
 }

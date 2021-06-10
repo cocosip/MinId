@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Volo.Abp.Validation;
 
 namespace SharpAbp.MinId
 {
-    public class UpdateMinIdTokenDto
+    public class UpdateMinIdTokenDto : IValidatableObject
     {
         /// <summary>
         /// BizType
@@ -22,5 +23,20 @@ namespace SharpAbp.MinId
         [Required]
         [DynamicStringLength(typeof(MinIdTokenConsts), nameof(MinIdTokenConsts.MaxRemarkLength))]
         public string Remark { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (!MinIdUtil.IsBizType(BizType))
+            {
+                yield return new ValidationResult($"Invalid BizType '{BizType}'.");
+            }
+
+            if (!MinIdUtil.IsToken(Token))
+            {
+                yield return new ValidationResult($"Invalid Token '{Token}'.");
+            }
+
+            yield break;
+        }
     }
 }

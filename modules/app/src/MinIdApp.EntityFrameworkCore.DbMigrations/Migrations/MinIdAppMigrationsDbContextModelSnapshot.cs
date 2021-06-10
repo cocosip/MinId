@@ -126,9 +126,7 @@ namespace MinIdApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BizType");
-
-                    b.HasIndex("Token")
+                    b.HasIndex("BizType", "Token")
                         .IsUnique();
 
                     b.ToTable("AbpMinIdTokens");

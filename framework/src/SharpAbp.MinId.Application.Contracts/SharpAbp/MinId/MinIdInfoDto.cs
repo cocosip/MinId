@@ -29,10 +29,5 @@ namespace SharpAbp.MinId
         /// Remainder
         /// </summary>
         public int Remainder { get; set; }
-
-        /// <summary>
-        /// Version
-        /// </summary>
-        public long Version { get; set; }
     }
 }
