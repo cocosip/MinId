@@ -6,7 +6,6 @@ namespace SharpAbp.MinId
 {
     public class MinIdPermissionDefinitionProvider : PermissionDefinitionProvider
     {
-
         public override void Define(IPermissionDefinitionContext context)
         {
             var minIdGroup = context.AddGroup(MinIdPermissions.GroupName, L(MinIdPermissions.GroupName));
