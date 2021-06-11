@@ -2,7 +2,7 @@
 
 # Build all solutions
 
-foreach ($solutionPath in $solutionPaths) {    
+foreach ($solutionPath in $buildPaths) {    
     $solutionAbsPath = (Join-Path $rootFolder $solutionPath)
     Set-Location $solutionAbsPath
     dotnet build  -c:Release 
