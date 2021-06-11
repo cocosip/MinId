@@ -12,7 +12,7 @@ Write-Host("rootPath:"+$rootPath)
 # List of solutions used only in development mode
 $solutionPaths = @(
 		"../framework"
-		"../modules/app"
+#		"../modules/app"
 #		"../modules/permission-management",
 	)
 
