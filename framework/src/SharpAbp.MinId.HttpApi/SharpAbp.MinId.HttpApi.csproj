@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="$(VoloAbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="4.3.3" />
   </ItemGroup>
 
   <ItemGroup>

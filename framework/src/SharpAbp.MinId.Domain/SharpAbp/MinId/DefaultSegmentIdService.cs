@@ -59,7 +59,7 @@ namespace SharpAbp.MinId
 
                     minIdInfo.UpdateMaxId(newMaxId);
                     await MinIdInfoRepository.UpdateAsync(minIdInfo);
-                    await uow.SaveChangesAsync();
+                    //await uow.SaveChangesAsync();
                     await uow.CompleteAsync();
                     segmentId = ConvertToSegmentId(minIdInfo);
                 }
