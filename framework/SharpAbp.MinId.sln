@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpAbp.MinId.HttpApi", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpAbp.MinId.HttpApi.Client", "src\SharpAbp.MinId.HttpApi.Client\SharpAbp.MinId.HttpApi.Client.csproj", "{36E2735F-CEAB-44C8-A6D1-2CDAFF399751}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpAbp.MinId.Application.Tests", "test\SharpAbp.MinId.Application.Tests\SharpAbp.MinId.Application.Tests.csproj", "{66C45FBF-521B-4E4B-B611-680EDBD7B4D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpAbp.MinId.Application.Tests", "test\SharpAbp.MinId.Application.Tests\SharpAbp.MinId.Application.Tests.csproj", "{66C45FBF-521B-4E4B-B611-680EDBD7B4D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
