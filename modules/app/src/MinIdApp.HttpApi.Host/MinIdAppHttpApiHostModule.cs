@@ -1,4 +1,3 @@
-using Kayisoft.Abp.App.Version;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.Extensions.Configuration;
@@ -43,8 +42,7 @@ namespace MinIdApp
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpAccountWebIdentityServerModule),
         typeof(AbpAspNetCoreSerilogModule),
-        typeof(AbpSwashbuckleModule),
-        typeof(AbpAppVersionModule)
+        typeof(AbpSwashbuckleModule)
         )]
     public class MinIdAppHttpApiHostModule : AbpModule
     {
@@ -54,10 +52,7 @@ namespace MinIdApp
         {
             var configuration = context.Services.GetConfiguration();
             var hostingEnvironment = context.Services.GetHostingEnvironment();
-
-            //版本信息
-            ConfigureAppVersion();
-
+ 
             //AddAlwaysAllowAuthorization
             ConfigureAlwaysAllowAuthorization(hostingEnvironment, context);
 
@@ -74,20 +69,7 @@ namespace MinIdApp
             ConfigureSwaggerServices(context, configuration);
         }
 
-        /// <summary>
-        /// 版本信息
-        /// </summary>
-        private void ConfigureAppVersion()
-        {
-            Configure<AbpAppVersionOptions>(options =>
-            {
-                options.AppId = "MinIdApp";
-                options.AppName = "MinIdApp";
-                options.Version = "0.1.0";
-                options.MinorVersion = "2021.06.09.01";
-                options.Description = "第一版";
-            });
-        }
+        
 
         /// <summary>
         /// 在调试下,允许任意人调用接口,不进行身份校验

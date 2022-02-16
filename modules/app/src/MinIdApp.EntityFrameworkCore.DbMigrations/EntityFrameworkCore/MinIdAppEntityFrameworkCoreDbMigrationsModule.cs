@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using Volo.Abp.Modularity;
 
 namespace MinIdApp.EntityFrameworkCore
@@ -10,6 +11,7 @@ namespace MinIdApp.EntityFrameworkCore
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             context.Services.AddAbpDbContext<MinIdAppMigrationsDbContext>();
         }
     }
